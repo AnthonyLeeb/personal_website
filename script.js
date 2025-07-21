@@ -80,6 +80,42 @@ document.querySelectorAll('.skill-tag').forEach(tag => {
     });
 });
 
+// AWS-themed project card interactions
+document.querySelectorAll('.aws-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        const icon = card.querySelector('.aws-icon');
+        if (icon) {
+            icon.style.transform = 'scale(1.2) rotate(5deg)';
+            icon.style.transition = 'transform 0.3s ease';
+        }
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        const icon = card.querySelector('.aws-icon');
+        if (icon) {
+            icon.style.transform = 'scale(1) rotate(0deg)';
+        }
+    });
+});
+
+// Add floating animation to AWS icons on scroll
+const awsIcons = document.querySelectorAll('.aws-icon');
+let scrollTimeout;
+
+window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    
+    awsIcons.forEach(icon => {
+        icon.style.animationPlayState = 'paused';
+    });
+    
+    scrollTimeout = setTimeout(() => {
+        awsIcons.forEach(icon => {
+            icon.style.animationPlayState = 'running';
+        });
+    }, 150);
+});
+
 // Dynamic typing effect for hero subtitle (optional enhancement)
 function typeWriter(element, text, speed = 100) {
     let i = 0;
