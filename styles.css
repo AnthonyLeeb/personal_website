@@ -40,10 +40,27 @@ body {
 }
 
 .nav-logo a {
+    font-family: 'Orbitron', monospace;
     font-size: 1.5rem;
     font-weight: 700;
     color: #2563eb;
     text-decoration: none;
+    position: relative;
+}
+
+.nav-logo a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #FF9900, #FF6B00);
+    transition: width 0.3s ease;
+}
+
+.nav-logo a:hover::after {
+    width: 100%;
 }
 
 .nav-menu {
@@ -82,7 +99,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #FF9900 0%, #232F3E 50%, #146EB4 100%);
+    background: linear-gradient(135deg, #FF9900 0%, #232F3E 30%, #146EB4 60%, #FF6B00 100%);
     color: white;
     text-align: center;
     position: relative;
@@ -96,8 +113,21 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="aws-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23aws-pattern)"/></svg>');
-    animation: float 20s ease-in-out infinite;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="code-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><text x="5" y="15" fill="rgba(255,255,255,0.05)" font-family="monospace" font-size="8">&lt;/&gt;</text><text x="25" y="35" fill="rgba(255,255,255,0.03)" font-family="monospace" font-size="6">AWS</text></pattern></defs><rect width="100" height="100" fill="url(%23code-pattern)"/></svg>'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="racing-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"><rect x="0" y="25" width="60" height="10" fill="rgba(255,255,255,0.02)"/><rect x="0" y="25" width="30" height="10" fill="rgba(255,107,0,0.03)"/></pattern></defs><rect width="200" height="200" fill="url(%23racing-pattern)"/></svg>');
+    animation: codeFloat 25s linear infinite, racingStripes 15s linear infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cloud-pattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="15" cy="25" r="2" fill="rgba(255,255,255,0.04)"/><circle cx="35" cy="15" r="1.5" fill="rgba(255,255,255,0.03)"/><circle cx="25" cy="35" r="1" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23cloud-pattern)"/></svg>');
+    animation: cloudFloat 30s ease-in-out infinite;
 }
 
 .hero-container {
@@ -107,10 +137,13 @@ body {
 }
 
 .hero-title {
+    font-family: 'Orbitron', monospace;
     font-size: 3.5rem;
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
+    animation: fadeInUp 1s ease, techGlow 3s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 187, 36, 0.5);
+    letter-spacing: 2px;
 }
 
 .highlight {
@@ -118,10 +151,13 @@ body {
 }
 
 .hero-subtitle {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease 0.2s both;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .hero-description {
@@ -151,25 +187,66 @@ body {
 }
 
 .btn-primary {
-    background-color: #fbbf24;
+    background: linear-gradient(45deg, #fbbf24, #FF6B00);
     color: #1f2937;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    background-color: #f59e0b;
+    background: linear-gradient(45deg, #f59e0b, #FF8C00);
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 0, 0.3);
 }
 
 .btn-secondary {
     background-color: transparent;
     color: white;
-    border-color: white;
+    border-color: #fbbf24;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(45deg, #fbbf24, #FF6B00);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.btn-secondary:hover::before {
+    width: 100%;
 }
 
 .btn-secondary:hover {
-    background-color: white;
-    color: #667eea;
+    color: #1f2937;
+    border-color: #fbbf24;
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
 }
 
 /* Sections */
@@ -537,6 +614,54 @@ section {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes codeFloat {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(-10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(5px) translateY(-10px);
+    }
+    75% {
+        transform: translateX(-5px) translateY(-3px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes racingStripes {
+    0% {
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(100px);
+    }
+}
+
+@keyframes cloudFloat {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    33% {
+        transform: translateY(-15px) translateX(10px);
+    }
+    66% {
+        transform: translateY(-5px) translateX(-8px);
+    }
+}
+
+@keyframes techGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(255, 187, 36, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(255, 187, 36, 0.8), 0 0 40px rgba(255, 107, 0, 0.3);
     }
 }
 
