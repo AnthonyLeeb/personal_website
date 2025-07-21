@@ -117,6 +117,7 @@ body {
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="code-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><text x="5" y="15" fill="rgba(255,255,255,0.05)" font-family="monospace" font-size="8">&lt;/&gt;</text><text x="25" y="35" fill="rgba(255,255,255,0.03)" font-family="monospace" font-size="6">AWS</text></pattern></defs><rect width="100" height="100" fill="url(%23code-pattern)"/></svg>'),
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="racing-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"><rect x="0" y="25" width="60" height="10" fill="rgba(255,255,255,0.02)"/><rect x="0" y="25" width="30" height="10" fill="rgba(255,107,0,0.03)"/></pattern></defs><rect width="200" height="200" fill="url(%23racing-pattern)"/></svg>');
     animation: codeFloat 25s linear infinite, racingStripes 15s linear infinite;
+    pointer-events: none;
 }
 
 .hero::after {
@@ -128,12 +129,15 @@ body {
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="cloud-pattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="15" cy="25" r="2" fill="rgba(255,255,255,0.04)"/><circle cx="35" cy="15" r="1.5" fill="rgba(255,255,255,0.03)"/><circle cx="25" cy="35" r="1" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23cloud-pattern)"/></svg>');
     animation: cloudFloat 30s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .hero-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-title {
